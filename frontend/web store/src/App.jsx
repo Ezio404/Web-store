@@ -3,7 +3,7 @@ import Homepage from "./pages/homepage.jsx";
 import SignupPage from "./pages/signupPage.jsx";
 import LoginPage from "./pages/loginPage.jsx";
 import Navbar from "./Components/navbar.jsx";
-import './../src/output.css';
+import './index.css';
 
 function App() {
 
@@ -29,4 +29,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

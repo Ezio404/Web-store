@@ -3,7 +3,6 @@ import Homepage from "./pages/homepage.jsx";
 import SignupPage from "./pages/signupPage.jsx";
 import LoginPage from "./pages/loginPage.jsx";
 import Navbar from "./Components/navbar.jsx";
-import { AuroraBackground } from "./Components/ui/aurora-background.jsx";
 import './../src/output.css';
 
 function App() {

@@ -29,8 +29,8 @@ const useUserStore = create((set,get) => ({
   try {
     const res = await axios.post("/auth/login",{email,password});
     console.log('called here');
-
     set({user: res.data.user,loading:false});
+    console.log(res.data.user);
   } catch (error) { 
     set({loading:false});
     toast.error(error.response.data.message);

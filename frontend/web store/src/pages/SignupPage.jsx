@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const SignupPage = () => {
-  const loading = true;
+  const loading = false;
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -1,4 +1,4 @@
-import redis from "../controllers/lib/redis.js";
+import {redis} from "../lib/redis.js";
 import Product from "../models/productmodel.js";
 import jwt from "jsonwebtoken";
 
@@ -81,4 +81,4 @@ export const getcart = async (req, res) => {
 console.log('error in getcart controller', error.message);
 res.status(500).json({ message: error.message });
   }
-}
+};

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { UserPlus, Lock, User, Mail, Loader, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import useUserStore from "../stores/UseUserStore.js";
 
 const SignupPage = () => {
-  const loading = false;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,10 +12,15 @@ const SignupPage = () => {
     confirmpassword: "",
   });
 
+  const {signup,loading} = useUserStore();
+
   const handlesubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    console.log('called here!')
+    signup(formData);
   };
+
 
   return (
     <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -128,8 +133,8 @@ const SignupPage = () => {
 									id='confirmPassword'
 									type='password'
 									required
-									value={formData.confirmPassword}
-									onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+									value={formData.confirmpassword}
+									onChange={(e) => setFormData({ ...formData, confirmpassword: e.target.value })}
 									className=' block w-full px-3 py-2 pl-10 bg-gray-700 border
 									 border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm'
 									placeholder='••••••••'

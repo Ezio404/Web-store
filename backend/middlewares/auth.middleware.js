@@ -33,7 +33,7 @@ export const protectroute = async (req, res, next) => {
 }
 
 export const adminroute = (req, res, next) => {
-  if (req.user && req.user.isAdmin === "admin") {
+  if (req.user && req.user.role === "admin") {
     next();
   } else {
     return res.status(401).json({ message: "unauthorized- admin required" });

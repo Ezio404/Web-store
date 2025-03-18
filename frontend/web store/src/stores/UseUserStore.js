@@ -29,13 +29,34 @@ const useUserStore = create((set,get) => ({
   try {
     const res = await axios.post("/auth/login",{email,password});
     console.log('called here');
-    set({user: res.data.user,loading:false});
-    console.log(res.data.user);
+    set({user: res.data,loading:false});
+    console.log(res.data);
   } catch (error) { 
     set({loading:false});
     toast.error(error.response.data.message);
   }
-}
+},
+logout: async () => {
+  try {
+    await axios.post("/auth/logout");
+    console.log('logout called')
+    set({ user: null });
+  } catch (error) {
+    toast.error(error.response?.data?.message || "An error occurred during logout");
+  }
+},
+
+checkAuth : async()=>{
+  set({checkingAuth:true});
+  try {
+    const res = await axios.get("/auth/profile");
+    set({user: res.data,checkingAuth:false});
+  } catch (error) { 
+    set({checkingAuth:false,user:null});
+    toast.error(error.response.data.message);
+  }
+},
+
 
 })); 
 

@@ -107,7 +107,7 @@ export const getproductsbycategory = async (req, res) => {
 
   try {
     const products = await Product.find({category});
-    res.json(products);
+    res.json({products});
   } catch {
     console.log(error.message);
   }

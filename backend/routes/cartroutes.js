@@ -1,11 +1,11 @@
 import express from "express";
-import {addtocart, deleteallcart, updatecart,getcart} from "../controllers/cartcontroller.js";
+import {addToCart, deleteallcart, updatecart,getCartProducts} from "../controllers/cartcontroller.js";
 import { protectroute } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/",protectroute, getcart);
-router.post("/",protectroute, addtocart);
+router.get("/",protectroute, getCartProducts);
+router.post("/",protectroute, addToCart);
 router.delete("/",protectroute, deleteallcart);
 router.put("/:id",protectroute, updatecart);       
 

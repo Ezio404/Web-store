@@ -19,11 +19,11 @@ const userschema = mongoose.Schema({
       required: true,
     },
 
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
+    role: {
+			type: String,
+			enum: ["customer", "admin"],
+			default: "customer",
+		},
     CartItems: [
       {
         quantity: {

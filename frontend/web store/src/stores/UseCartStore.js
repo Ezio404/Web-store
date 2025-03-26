@@ -56,6 +56,26 @@ const UseCartStore = create((set,get)=>({
 
 		set({ subtotal, total });
 	},
+		removeFromCart: async (productId) => {
+				const res = await axios.delete(`/cart/${productId}`);
+				set((prevState) => ({cart: prevState.cart.filter((item)=> item._id !== productId)}));
+				get().calculateTotals();
+		},
+
+	updateQuantity: async (productId, quantity) => {
+		
+			if (quantity===0){
+				get().removeFromCart(productId);
+				return;
+			}
+			
+				const res = await axios.put(`/cart/${productId}`, { quantity });
+						set((prevState) => ({
+							cart: prevState.cart.map((item) => (item._id === productId ? { ...item, quantity } : item)),
+						}));
+						get().calculateTotals();
+	},
+	
 
 
 

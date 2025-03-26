@@ -3,18 +3,21 @@ import Homepage from "./pages/homepage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import LoadingSpinner from "./Components/loadingspinnder.jsx";
 import Navbar from "./Components/navbar.jsx";
 import './index.css';
 import { Toaster } from "react-hot-toast";
 import useUserStore from "./stores/UseUserStore.js";
+import useCartStore from "./stores/UseCartStore.js";
 import { useEffect } from "react";
 
 function App() {
 const {user,checkAuth,checkingauth} = useUserStore();
-
+const {getCartItems} = useCartStore();
 useEffect(()=>{checkAuth()},[checkAuth]);
+useEffect(()=>{getCartItems()},[getCartItems]);
 
 if(checkingauth){return <LoadingSpinner />}
 
@@ -36,6 +39,7 @@ if(checkingauth){return <LoadingSpinner />}
         <Route path="/login" element={!user ? <LoginPage /> : <Navigate to='/' />} />
         <Route path="/secret-dashboard" element={user?.role==='admin' ? <AdminPage /> : <Navigate to='/login'/>} />
         <Route path="/category/:category" element={<CategoryPage/>} />
+        <Route path="/cart" element={user ? <CartPage/> : <Navigate to='/login'/>} />
 
       </Routes>
       </div>

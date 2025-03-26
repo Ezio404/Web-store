@@ -42,9 +42,9 @@ const Navbar = () => {
                 size={20}
               />
               <span className="hidden sm:inline">cart</span>
-              <span className="absolute -top-2 -left-2 bg-purple-500 text-white rounded-full px-2 py-0.5 text-xs group-hover:bg-grey-600 transition duration-300 ease-in-out">
+            {  cart.length > 0 && (<span className="absolute -top-2 -left-2 bg-purple-500 text-white rounded-full px-2 py-0.5 text-xs group-hover:bg-grey-600 transition duration-300 ease-in-out">
                 {cart.length}
-              </span>
+              </span>)}
             </Link>
           )}
 
